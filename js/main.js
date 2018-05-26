@@ -120,3 +120,8 @@ $(window).on("scroll", function() {
   }
 });
 
+
+const cheesburger = document.querySelector(".shapeshifter");
+    cheesburger.addEventListener("click",function () {
+    cheesburger.classList.toggle("play");
+});
