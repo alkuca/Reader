@@ -125,3 +125,31 @@ const cheesburger = document.querySelector(".shapeshifter");
     cheesburger.addEventListener("click",function () {
     cheesburger.classList.toggle("play");
 });
+
+const sidebar = document.querySelector(".sidebar");
+const sidebarText = document.querySelectorAll(".sidebar h1");
+const sidebarLogo = document.querySelector("#logoSidebar");
+
+function openSidebar(){
+  TweenMax.to(sidebar, 1, {width:"100%"});
+  TweenMax.to(".main",0.8, {opacity:0.6});
+  TweenMax.staggerTo(sidebarText, 1, {x:0, opacity:1}, 0.2);
+  TweenMax.to(sidebarLogo,3, {opacity:1, delay:1.5});
+}
+
+function closeSidebar(){
+  TweenMax.to(sidebar, 1, {width:"70px"});
+  TweenMax.to(".main",0.8, {opacity:1});
+  TweenMax.staggerTo(sidebarText, 0.6, {x:500, opacity:0}, 0.15);
+  TweenMax.to(sidebarLogo,0.4, {opacity:0});
+}
+
+cheesburger.addEventListener("click", toggleSidebar);
+
+function toggleSidebar(){
+  sidebarSize = sidebar.style.width;
+  if (sidebarSize === "100%") {
+    return closeSidebar();
+  }
+  return openSidebar();
+}
